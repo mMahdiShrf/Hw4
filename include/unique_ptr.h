@@ -15,11 +15,12 @@ class UniquePtr
     T* operator->();
     T operator*();
     UniquePtr& operator=(const UniquePtr& obj)=delete;
-
+    operator bool(){return (_p == nullptr) ? false : true;}
     private :
     T* _p;
 };
 
+#include "unique_ptr.hpp"
 
 
 

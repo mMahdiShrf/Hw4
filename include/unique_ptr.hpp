@@ -45,3 +45,25 @@ T* UniquePtr<T>::release()
     return __p;
 }
 
+template<typename T>
+T* UniquePtr<T>::operator->()
+{   
+    return get();
+}
+
+template<typename T>
+T UniquePtr<T>::operator*()
+{
+    return *_p;
+}
+
+template <typename T>
+UniquePtr<T>  make_unique(T obj)
+{
+    return UniquePtr<T> {new T{obj}};
+}
+
+
+
+
+
