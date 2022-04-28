@@ -9,15 +9,16 @@ class SharedPtr
 public:
 SharedPtr(T* ptr);
 SharedPtr();
-~SharedPtr();
 SharedPtr(SharedPtr<T>& obj);
+~SharedPtr();
 SharedPtr& operator=(SharedPtr& obj);
-int use_count();
-T* get();
 T operator*();
 T* operator->();
-void reset(T* ptr=nullptr);
 operator bool() {return (_p == nullptr) ? false : true;}
+int use_count();
+T* get();
+void reset(T* ptr=nullptr);
+
 
 
 private:
