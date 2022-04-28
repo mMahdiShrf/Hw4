@@ -1,6 +1,6 @@
 template <typename T>
 UniquePtr<T>:: UniquePtr(T* ptr):
-_p {ptr}
+_p {ptr} // initializeing values
 {}
 
 template <typename T>
@@ -22,19 +22,10 @@ T* UniquePtr<T>:: get()
 }
 
 template<typename T>
-void UniquePtr<T>::reset(T* ptr)
+void UniquePtr<T>::reset(T* ptr) // delete memory and assign nullptr
 {
-    if (!ptr)
-    {
-        delete _p;
-        _p = nullptr;
-        _p = ptr;
-    }
-    else
-    {
-        delete _p;
-        _p = ptr;
-    }
+    delete _p;
+    _p = ptr;
 }
 
 template<typename T>
@@ -60,7 +51,7 @@ T UniquePtr<T>::operator*()
 template <typename T>
 UniquePtr<T>  make_unique(T obj)
 {
-    return UniquePtr<T> {new T{obj}};
+    return UniquePtr<T> {new T{obj}}; 
 }
 
 
