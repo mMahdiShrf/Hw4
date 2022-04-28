@@ -20,16 +20,17 @@ SharedPtr<T>::~SharedPtr()
 }
 
 template<typename T>
-SharedPtr<T>::SharedPtr(SharedPtr<T>& obj) // copy constructor 
+SharedPtr<T>::SharedPtr(const SharedPtr<T>& obj) // copy constructor 
 {   
     _p = obj._p;
     __p = obj.__p;
-    *obj.refrence = *(obj.refrence) + 1; // because of this statment input can't be const
-    refrence = obj.refrence;  // new Shared Pointer has to have same refrence with obj
+    refrence = obj.refrence;   // new Shared Pointer has to have same refrence with obj
+    *refrence = *refrence + 1; 
+    
 }   
 
 template<typename T>
-SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>& obj)
+SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& obj)
 {   
     if(obj._p == _p ) 
         return *this;

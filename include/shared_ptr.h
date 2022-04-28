@@ -9,9 +9,9 @@ class SharedPtr
 public:
 SharedPtr(T* ptr);
 SharedPtr();
-SharedPtr(SharedPtr<T>& obj); // copy constructor 
+SharedPtr(const SharedPtr<T>& obj); // copy constructor 
 ~SharedPtr();
-SharedPtr& operator=(SharedPtr& obj); // copy version of operator=
+SharedPtr& operator=(const SharedPtr& obj); // copy version of operator=
 T operator*();
 T* operator->();
 operator bool() {return (_p == nullptr) ? false : true;} // challenge part
