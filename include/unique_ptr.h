@@ -9,11 +9,11 @@ class UniquePtr
     UniquePtr();
     UniquePtr(const UniquePtr<T>& obj)=delete;    
     ~UniquePtr();
+    void reset(T* ptr=nullptr);
+    T* release();
     T* get();
     T* operator->();
     T operator*();
-    void reset(T* ptr=nullptr);
-    T* release();
     UniquePtr& operator=(const UniquePtr& obj)=delete;
 
     private :
