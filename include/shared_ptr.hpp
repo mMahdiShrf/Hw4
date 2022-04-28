@@ -67,3 +67,22 @@ T* SharedPtr<T>::operator->()
 {   
     return get();
 }
+
+template<typename T>
+void SharedPtr<T>::reset(T* ptr)
+{
+    if(*refrence == 1)
+        delete _p;
+    *refrence -= 1;
+    refrence = new int {};
+    if (ptr)
+        *refrence += 1;
+    _p = ptr;
+    
+}
+
+template <typename T>
+SharedPtr<T>  make_shared(T obj)
+{
+    return SharedPtr<T> {new T{obj}};
+}
