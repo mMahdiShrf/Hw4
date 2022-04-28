@@ -44,3 +44,26 @@ SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>& obj)
 
 }
 
+template<typename T>
+int SharedPtr<T>:: use_count()
+{
+    return *refrence;
+}
+
+template<typename T>
+T* SharedPtr<T>:: get()
+{
+    return _p;
+}
+
+template<typename T>
+T SharedPtr<T>::operator*()
+{
+    return *_p;
+}
+
+template<typename T>
+T* SharedPtr<T>::operator->()
+{   
+    return get();
+}
