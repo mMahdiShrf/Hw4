@@ -12,3 +12,35 @@ SharedPtr<T>::SharedPtr(): SharedPtr(nullptr)
 {
     *refrence -= 1;
 }
+
+template<typename T>
+SharedPtr<T>::~SharedPtr() 
+{
+    *refrence -= 1;
+    if (*refrence == 0 )
+        delete _p;
+    *__p = nullptr;
+}
+
+template<typename T>
+SharedPtr<T>::SharedPtr(SharedPtr<T>& obj)
+{   
+    _p = obj._p;
+    __p = obj.__p;
+    *obj.refrence = *(obj.refrence) + 1;
+    refrence = obj.refrence;
+}   
+
+
+template<typename T>
+SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>& obj)
+{   
+    if(obj._p == _p )
+        return *this;
+    _p = obj._p;
+    refrence = obj.refrence;
+    *refrence += 1;
+    return *this;
+
+}
+
